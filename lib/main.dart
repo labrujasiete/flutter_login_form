@@ -11,13 +11,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Servify',
-      initialRoute: 'login',
+      initialRoute: 'home',
       routes: {
-        'login': ( _ ) => const LoginScreen(),
-        'home': ( _ ) => const HomeScreen(),
+        'login'   : ( _ ) => const LoginScreen(),
+        'home'    : ( _ ) => HomeScreen(),
+        'product' : ( _ ) => ProductScreen(),
       },
       theme: ThemeData.light().copyWith(
-        scaffoldBackgroundColor: Colors.grey[300]
+        scaffoldBackgroundColor: Colors.grey[300],
+        appBarTheme: AppBarTheme(
+          elevation: 0,
+          color: Colors.indigo
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.indigo,
+          elevation: 0  
+        )
       ),
     );
   }
