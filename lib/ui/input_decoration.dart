@@ -8,12 +8,12 @@ class InputDecorations {
     IconData? prefixIcon
   }) {
     return InputDecoration(
-                enabledBorder: UnderlineInputBorder(
+                enabledBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.deepPurple
                   )
                 ),
-                focusedBorder: UnderlineInputBorder(
+                focusedBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.deepPurple,
                     width: 2
@@ -21,7 +21,7 @@ class InputDecorations {
                 ),
                 hintText: hintText,
                 labelText: labelText,
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   color: Colors.grey
                 ),
                 prefixIcon: prefixIcon != null
