@@ -16,6 +16,7 @@ class Product {
         required this.name,
         this.picture,
         required this.price,
+        this.id
     });
 
     // Crear una instancia del producto probeniente de la base de datos
@@ -37,4 +38,12 @@ class Product {
         "picture": picture,
         "price": price,
     };
+
+    Product copy() => Product(
+        available : available,
+        name : name,
+        picture : picture,
+        price : price,
+        id : id,
+    );
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:products_app/screens/screens.dart';
 import 'package:provider/provider.dart';
 import 'package:products_app/widgets/widgets.dart';
 import 'package:products_app/services/services.dart';
@@ -10,6 +11,8 @@ class HomeScreen extends StatelessWidget {
 
     final productsService = Provider.of<ProductsService>(context);
 
+    if( productsService.isLoading ) return LoadingScreen();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Productos'),
@@ -17,10 +20,15 @@ class HomeScreen extends StatelessWidget {
       // ListView.builder() will lazy create only the items that 
       // are visible
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: productsService.products.length,
         itemBuilder: ( _, int index ) => GestureDetector(
-          onTap: () => Navigator.pushNamed(context, 'product'),
-          child: ProductCard()
+          onTap: () {
+            productsService.selectedProduct = productsService.products[index].copy();
+            Navigator.pushNamed(context, 'product');
+          },
+          child: ProductCard(
+            product: productsService.products[index],
+          )
         )
       ),
       floatingActionButton: FloatingActionButton(
